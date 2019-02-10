@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function input() {
+        var nama = $('.nama').val();
+        var nomorHp = $('.nomorHp').val();
+        var institusi = $('.institusi').val();
+        var email = $('.email').val();
+        var response = $('#response');
+
+        if (nama == '') {
+            response.hide()
+                .addClass('responseWait')
+                .text('Masih ada data yang belum diisi')
+                .fadeIn(200);
+        }
+
+        else if (nomorHp == '') {
+            response.hide()
+                .addClass('responseWait')
+                .text('Masih ada data yang belum diisi')
+                .fadeIn(200);
+        }
+
+        else if (institusi == '') {
+            response.hide()
+                .addClass('responseWait')
+                .text('Masih ada data yang belum diisi')
+                .fadeIn(200);
+        }
+
+        else if (email == '') {
+            response.hide()
+                .addClass('responseWait')
+                .text('Masih ada data yang belum diisi')
+                .fadeIn(200);
+        }
+        else {
+            $.ajax({
+                url: '/MAI-daftar',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    'nama': nama,
+                    'nomorHp': nomorHp,
+                    'institusi': institusi,
+                    'email': email
+                })
+            })
+            window.location.href = "/welcome";
+
+            response.hide()
+                .addClass('responseWait')
+                .text('SUCCESS')
+                .fadeIn(200);
+        }
+
+    }
+</script>
+
+<body background="/images/bg-dark-100.jpg">
+    {{>navbar}}
+    <div class="table width100">
+        <h1 class="font-content30 white align-center">Mobile Apps Innovation Registration</h1>
+    </div>
+
+    <div id="width100" class="margin-top0">
+        <div class="left padding-left5 width50">
+            <p class="font-content margin-bottom0 white">Nama Perwakilan Tim</p>
+            <input type="text" class="nama font-content white margin-top0">
+
+            <p class="font-content margin-bottom0 white">Nomor HP</p>
+            <input type="text" class="nomorHp font-content white margin-top0">
+
+            <p class="font-content margin-bottom0 white">Institusi</p>
+            <input type="text" class="institusi font-content white margin-top0">
+
+            <p class="font-content margin-bottom0 white">E-Mail</p>
+            <input type="text" class="email font-content white margin-top0">
+        </div>
+
+        <div class="width40 padding-right5 right">
+            <h1 class="font-content30 align-left white">Syarat & Ketentuan</h1>
+            <p class="font-content-kecil align-left white">1. Peserta berasal dari kalangan pelajar, mahasiswa,
+                ataupun umum se-Jabodetabek dengan maksimal usia 22 Tahun dibuktikan dengan Kartu Identitas.</p>
+            <p class="font-content-kecil align-left white">2. Peserta merupakan tim yang terdiri dari 3 anggota.</p>
+            <p class="font-content-kecil align-left white">3. Peserta harus berasal dari instansi yang sama.</p>
+            <button onclick="input()" class="box font-content vertical-title-center">DAFTAR</button>
+            <p id="response" class=""></p>
+        </div>
+    </div>
+</body>
