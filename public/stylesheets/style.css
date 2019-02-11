@@ -14,7 +14,7 @@ a {
 }S
 
 .background{
-  background-image: url("/public/images/bg-100.jpg");
+  background-image: url("images/bg-100.jpg");
 }
 
 .font-1{
