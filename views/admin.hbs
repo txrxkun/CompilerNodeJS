@@ -1,0 +1,49 @@
+<script>
+    function password() {
+        var password = $('.password').val(),
+        var response = $('#response');
+
+        if (password == '') {
+            response.hide()
+                .addClass('responseWait')
+                .text('Isi Password !')
+                .fadeIn(200);
+        }
+
+        else if (password == 'compileruhuy') {
+            response.hide()
+                .addClass('responseWait')
+                .text('WELCOME')
+                .fadeIn(200);
+        }
+
+        else {
+            response.hide()
+                .addClass('responseWait')
+                .text('You are not verified')
+                .fadeIn(200);
+        }
+
+        $.ajax({
+            url: '/pubgm-daftar',
+            type: 'GET',
+            contentType: 'application/json'
+        })    
+</script>
+
+<body class="background">
+    {{>navbar}}
+    <div style="display: block">
+        <div class="align-center" style="margin-top: 100px">
+            <p class="font-content30 white">PASSSWORD</p>
+            <input type="password" class="password align-center font-content white">
+        </div>
+
+        <div class="align-center" style="margin-top: 50px">
+            <button onclick="password()" class="box font-content">LOGIN</button>
+            <p id="response" class="font-content white"></p>
+        </div>
+    </div>
+
+    <div style="display: none"></div>
+</body>
