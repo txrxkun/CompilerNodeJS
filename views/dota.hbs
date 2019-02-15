@@ -4,7 +4,7 @@
     function input() {
         var nama = $('.nama').val();
         var nomorHp = $('.nomorHp').val();
-        var institusi = $('.institusi').val();
+        var namaTim = $('.namaTim').val();
         var email = $('.email').val();
         var response = $('#response');
 
@@ -22,7 +22,7 @@
                 .fadeIn(200);
         }
 
-        else if (institusi == '') {
+        else if (namaTim == '') {
             response.hide()
                 .addClass('responseWait')
                 .text('Masih ada data yang belum diisi')
@@ -38,13 +38,13 @@
 
         else {
             $.ajax({
-                url: '/wd-daftar',
+                url: '/dota-daftar',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
                     'nama': nama,
                     'nomorHp': nomorHp,
-                    'institusi': institusi,
+                    'namaTim': namaTim,
                     'email': email
                 })
             })
@@ -73,8 +73,8 @@
             <p class="font-content margin-bottom0 white">Nomor HP</p>
             <input type="text" class="nomorHp font-content white margin-top0">
 
-            <p class="font-content margin-bottom0 white">Institusi</p>
-            <input type="text" class="institusi font-content white margin-top0">
+            <p class="font-content margin-bottom0 white">Nama Tim</p>
+            <input type="text" class="namaTim font-content white margin-top0">
 
             <p class="font-content margin-bottom0 white">E-Mail</p>
             <input type="text" class="email font-content white margin-top0">
@@ -82,10 +82,12 @@
 
         <div class="width40 padding-right5 right">
             <h1 class="font-content30 align-left white">Syarat & Ketentuan</h1>
-            <p class="font-content-kecil align-left white">1. Peserta Web Designed Competition merupakan Mahasiswa,
-                Siswa MA/SMA/K sederajat dan umum
-                se-Jabodetabek yang dibuktikan dengan fotokopi kartu Identitas.</p>
-                <p class="font-content-kecil align-left white">2. Biaya pendaftaran 100k/Orang</p>
+            <p class="font-content-kecil align-left white">1. Peserta DOTA 2 Tournament merupakan Mahasiswa, Siswa
+                SMA/MA/K sederajat dan umum se-Jabodetabek.</p>
+            <p class="font-content-kecil align-left white">2. Peserta tergabung dalam tim yang terdiri dari 5 Orang,
+                Maksimal 6 Orang (5 Orang Inti dan 1 Cadangan).</p>
+            <p class="font-content-kecil align-left white">3. Nama tim tidak diperbolehkan mengandung unsur SARA.</p>
+            <p class="font-content-kecil align-left white">4. Biaya pendaftaran 100k/Tim.</p>
             <button onclick="input()" class="box font-content vertical-title-center">DAFTAR</button>
             <p id="response" class=""></p>
         </div>

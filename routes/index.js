@@ -113,18 +113,18 @@ router.route('/MAI-daftar')
     })
   })
 
-router.route('/wd-daftar')
+router.route('/dota-daftar')
   .get(function (req, res) {
-    res.render('webDesign')
+    res.render('dota')
   })
 
   .post(function (req, res) {
     var nama = req.body.nama,
       nomorHp = req.body.nomorHp,
-      institusi = req.body.institusi,
+      namaTim = req.body.namaTim,
       email = req.body.email,
-      insertQuery = 'insert into webdesign (nama, nomorHp, institusi, email) values (?,?,?,?);'
-    con.query(insertQuery, [nama, nomorHp, institusi, email], function (err, rows, field) {
+      insertQuery = 'insert into dota (nama, nomorHp, namaTim, email) values (?,?,?,?);'
+    con.query(insertQuery, [nama, nomorHp, namaTim, email], function (err, rows, field) {
       if (err) {
         res.status(500).send
           (
